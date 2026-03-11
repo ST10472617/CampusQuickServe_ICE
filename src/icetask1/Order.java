@@ -1,0 +1,69 @@
+package icetask1;
+
+import javax.swing.JOptionPane;
+
+public class Order {
+
+    private String customerName;
+    private String studentNr;
+    private String order;
+    private int quantity;
+    private double price;
+    private static final int VAT = 15;
+    private double orderSubt;
+    private double discount;
+    private double vatAmount;
+    private double totalAmount;
+
+    public Order() {
+        //string inputs for students order 
+        customerName = JOptionPane.showInputDialog("Please enter your name:");
+
+        studentNr = JOptionPane.showInputDialog(" Please enter your student number:");
+
+        order = JOptionPane.showInputDialog("Enter your food order:");
+
+        //numerical inputs for the amount of food ordered
+        quantity = Integer.parseInt(JOptionPane.showInputDialog("Enter quantity of food:"));
+
+        price = Double.parseDouble(JOptionPane.showInputDialog("Enter the price of the item"));
+
+        
+       
+        
+        if(quantity >= 3)
+        {
+            orderSubt = (quantity * price) *90/100;
+            discount = orderSubt * 10/90;
+        }
+        else
+        {
+            orderSubt = (quantity * price);
+        }
+        
+        vatAmount = orderSubt * VAT/100;
+        
+        totalAmount = orderSubt + vatAmount;
+        
+         
+    }
+
+    public String toString() 
+    {
+        if (quantity >= 3)
+        {
+            return "------ CAMPUS QUICKSERVE ------\nCustomer: " + customerName + "\nStudent Number: " 
+               + studentNr + "\n\nItem Ordered: " + order + "\nQuantity: " + quantity + "\nPrice per Item: R"
+               + price + "\n\nSubtotal: R" + orderSubt + "\nDiscount: R" + discount + "\nVAT(15%): R" + vatAmount + "\nTotal: R" + totalAmount +
+               "\n\nThank you for your order! \n-------------------------------";
+        }
+        else
+        {
+            return "------ CAMPUS QUICKSERVE ------\nCustomer: " + customerName + "\nStudent Number: " 
+               + studentNr + "\n\nItem Ordered: " + order + "\nQuantity: " + quantity + "\nPrice per Item: R"
+               + price + "\n\nSubtotal: R" + orderSubt + "\nVAT(15%): R" + vatAmount + "\nTotal: R" + totalAmount +
+               "\n\nThank you for your order! \n-------------------------------";
+        }
+       
+    }
+}
